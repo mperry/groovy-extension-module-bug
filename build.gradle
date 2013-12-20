@@ -1,0 +1,25 @@
+
+apply plugin: 'groovy'
+
+defaultTasks "build"
+
+ext {
+	//groovyVersion = "2.1.6"
+	groovyVersion = "2.2.1"
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy:$groovyVersion"
+    compile("com.github.mperry:functionalgroovy-core:0.3-SNAPSHOT") {
+        changing = true
+        exclude group: "org.codehaus.groovy"
+    }
+    testCompile 'junit:junit:4.11'
+}
